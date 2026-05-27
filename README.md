@@ -24,7 +24,7 @@ workflow digitization.
 - React Router
 - Framer Motion
 - Lucide React
-- GitHub Pages with `gh-pages`
+- GitHub Pages deployed through GitHub Actions
 
 ## Features
 
@@ -76,16 +76,12 @@ This project targets the repository `Devlydays/portfolio`. Vite is configured
 with `base: '/portfolio/'`, which matches the live URL:
 `https://devlydays.github.io/portfolio/`.
 
-To publish after pushing the source branch:
+The workflow at `.github/workflows/deploy.yml` automatically builds and
+deploys `dist/` whenever code is pushed to `main`.
 
-```bash
-npm run deploy
-```
-
-The `predeploy` script automatically runs the production build before
-publishing `dist/` to the `gh-pages` branch. In GitHub repository
-**Settings > Pages**, configure deployment from the `gh-pages` branch and
-the `/ (root)` folder.
+In GitHub repository **Settings > Pages**, set **Source** to
+**GitHub Actions**. After the workflow completes successfully, the portfolio
+will be available at the live demo URL above.
 
 ## Push To GitHub
 
@@ -100,11 +96,7 @@ git commit -m "Prepare portfolio for GitHub Pages"
 git push -u origin main
 ```
 
-Then deploy the Pages branch:
-
-```bash
-npm run deploy
-```
+Every later push to `main` triggers a new deployment automatically.
 
 ## Resume PDF
 
